@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0d10" />
+    <title>عدّاد نطّ الحبل</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-state="idle">
+    <main>
+      <header>
+        <h1>عدّاد نطّ الحبل</h1>
+        <span id="demo-badge" class="badge" hidden>وضع تجربة: صوت مصنوع، مو المايك</span>
+      </header>
+
+      <section class="counter" aria-live="polite">
+        <div id="count" class="count">0</div>
+        <p id="status" class="status">حط الجوال على الأرض جنبك، واضغط ابدأ</p>
+        <div id="meter" class="meter" aria-hidden="true">
+          <div id="meter-fill" class="meter-fill"></div>
+          <div id="meter-thr" class="meter-thr"></div>
+        </div>
+      </section>
+
+      <section id="result" class="result" hidden>
+        <div><span class="label">المدة</span> <span id="r-duration">0:00</span></div>
+        <div><span class="label">السرعة</span> <span id="r-rate">0</span> نطة بالدقيقة</div>
+      </section>
+
+      <p id="error" class="error" role="alert" hidden></p>
+
+      <div class="buttons">
+        <button id="start" class="btn primary" data-show="idle">ابدأ</button>
+        <button id="stop" class="btn danger" data-show="countdown running">وقف</button>
+        <button id="resume" class="btn primary" data-show="done">كمّل</button>
+        <button id="again" class="btn" data-show="done">تمرين جديد</button>
+      </div>
+
+      <button id="copy" class="link" data-show="done">نسخ بيانات الضبط</button>
+
+      <details class="settings">
+        <summary>الإعدادات</summary>
+        <label for="sensitivity">
+          الحساسية: <strong id="sensitivity-value">5</strong>
+        </label>
+        <input id="sensitivity" type="range" min="1" max="10" step="1" value="5" />
+        <p class="hint">
+          لو العدّ يطلع أكثر من نطاتك الحقيقية نزّلها، ولو يطلع أقل ارفعها.
+          الخط الأبيض في الشريط هو الحد: الصوت اللي يتعداه ينحسب نطة.
+        </p>
+      </details>
+
+      <ul class="tips">
+        <li>حط الجوال على الأرض، على جنب وبعيد عن الحبل بمتر تقريبًا.</li>
+        <li>بعد آخر نطة، اوقف مكانك 5 ثواني والعدّ يوقف لحاله.</li>
+        <li>لا تعدّ بصوت عالي، المايك بيسمعك.</li>
+      </ul>
+    </main>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
